@@ -1,5 +1,5 @@
 
-package main
+package differ
 
 import (
   //"fmt"
