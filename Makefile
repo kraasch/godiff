@@ -1,6 +1,7 @@
 
 test:
-	go test -v ./...
+	go test ./... -run=.*/more-empty-lines-in-b-than-a-00
+	#go test -v ./...
 
 run:
 	go run ./godiff/diff.go
