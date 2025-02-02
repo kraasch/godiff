@@ -5,6 +5,7 @@ import (
 
   // this is a test.
   "testing"
+  // "reflect"
 
   // prints.
   "fmt"
@@ -240,7 +241,7 @@ func TestAll(t *testing.T) {
       t.Run(name, func(t *testing.T) {
         exp := test.expectedValue
         got := suite.functionUnderTest(test.inputA, test.inputB)
-        // if !reflect.DeepEqual(tc.want, got) { // TODO: implement.
+        // if !reflect.DeepEqual(exp, got) { // NOTE: maybe use this.
         if exp != got {
           t.Errorf("In '%s':\n  Exp: '%#v'\n  Got: '%#v'\n", name, exp, got)
         }
