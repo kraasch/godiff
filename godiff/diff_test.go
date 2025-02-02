@@ -5,13 +5,14 @@ import (
 
   // this is a test.
   "testing"
-  // "reflect"
+  "github.com/google/go-cmp/cmp"
 
   // prints.
   "fmt"
 
   // other imports.
   // "strings"
+  // "reflect"
 )
 
 var (
@@ -230,6 +231,28 @@ var suites = []TestSuite{
                        "|24 25 26 27 28"       + NL +
                        "|"                     + NL,
       },
+      {
+        testName:      "example-01",
+        inputA:
+                       "Mo Tu We Th Fr Sa Su" + NL +
+                       "       1  2  3  4  5" + NL +
+                       " 6  7  8  9 10 11 12" + NL +
+                       "13 14 15 16 17 18 19" + NL +
+                       "20 21 22 23 24 25 26" + NL +
+                       "27 28"                + NL +
+                       ""                     + NL,
+        inputB:
+                       "Mo Tu We Th Fr Sa Su" + NL +
+                       "       1  2  3  4  5" + NL +
+                       " 6  7  8  9 10 11 12" + NL +
+                       "13 14 25 16 17 18 19" + NL +
+                       "20 21 22 23 24 25 26" + NL +
+                       "27 28"                + NL +
+                       ""                     + NL,
+        expectedValue:
+                       "|13 14 15 17 17 18 19" + NL +
+                       ":13 14 25 16 17 18 19" + NL,
+      },
     },
   },
 }
@@ -241,10 +264,20 @@ func TestAll(t *testing.T) {
       t.Run(name, func(t *testing.T) {
         exp := test.expectedValue
         got := suite.functionUnderTest(test.inputA, test.inputB)
-        // if !reflect.DeepEqual(exp, got) { // NOTE: maybe use this.
-        if exp != got {
-          t.Errorf("In '%s':\n  Exp: '%#v'\n  Got: '%#v'\n", name, exp, got)
+
+        // if exp != got {
+        //   t.Errorf("In '%s':\n  Exp: '%#v'\n  Got: '%#v'\n", name, exp, got)
+        // }
+
+        // if !reflect.DeepEqual(exp, got) {
+        //   t.Errorf("In '%s':\n  Exp: '%#v'\n  Got: '%#v'\n", name, exp, got)
+        // }
+
+        diff := cmp.Diff(exp, got)
+        if diff != "" {
+          t.Fatalf("\n%s\n", diff)
         }
+
       })
     }
   }
