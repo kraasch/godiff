@@ -1,5 +1,5 @@
 
-package differ
+package godiff
 
 import (
 
