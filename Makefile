@@ -3,7 +3,7 @@ test:
 	go test -v ./...
 
 run:
-	go run ./cmd/diff.go
+	go run ./godiff/diff.go
 
 .PHONY: build
 build:
@@ -12,5 +12,5 @@ build:
 	go build \
 		-o ./build/godiff \
 		-gcflags -m=2 \
-		./cmd/ 
+		./godiff/ 
 
