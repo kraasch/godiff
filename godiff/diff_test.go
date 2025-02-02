@@ -169,38 +169,66 @@ var suites = []TestSuite{
                        "|       1  2  3  4  5" + NL +
                        ":                1  2" + NL,
       },
-      // {
-      //   testName:      "more-empty-lines-in-b-than-a-00",
-      //   inputA:
-      //                  "Mo Tu We Th Fr Sa Su" + NL +
-      //                  "       1  2  3  4  5" + NL +
-      //                  " 6  7  8  9 10 11 12" + NL +
-      //                  "13 14 15 16 17 18 19" + NL +
-      //                  "20 21 22 23 24 25 26" + NL +
-      //                  "27 28"                + NL +
-      //                  ""                     + NL,
-      //   inputB:
-      //                  "Mo Tu We Th Fr Sa Su" + NL +
-      //                  "                1  2" + NL +
-      //                  " 3  4  5  6  7  8  9" + NL +
-      //                  "10 11 12 13 14 15 16" + NL +
-      //                  "17 18 19 20 21 22 23" + NL +
-      //                  "24 25 26 27 28"       + NL +
-      //                  ""                     + NL +
-      //                  ""                     + NL,
-      //   expectedValue:
-      //                  "|       1  2  3  4  5" + NL +
-      //                  "| 6  7  8  9 10 11 12" + NL +
-      //                  "|13 14 15 16 17 18 19" + NL +
-      //                  "|20 21 22 23 24 25 26" + NL +
-      //                  "|27 28"                + NL +
-      //                  ":                1  2" + NL +
-      //                  ": 3  4  5  6  7  8  9" + NL +
-      //                  ":10 11 12 13 14 15 16" + NL +
-      //                  ":17 18 19 20 21 22 23" + NL +
-      //                  ":24 25 26 27 28"       + NL +
-      //                  ":"                     + NL,
-      // },
+      {
+        testName:      "more-empty-lines-in-a-than-b-00",
+        inputA:
+                       "A" + NL +
+                       ""  + NL +
+                       ""  + NL,
+        inputB:
+                       "B" + NL +
+                       ""  + NL,
+        expectedValue:
+                       "|A" + NL +
+                       "|"  + NL +
+                       ":B" + NL,
+      },
+      {
+        testName:      "more-empty-lines-in-b-than-a-00",
+        inputA:
+                       "A" + NL +
+                       ""  + NL,
+        inputB:
+                       "B" + NL +
+                       ""  + NL +
+                       ""  + NL,
+        expectedValue:
+                       ":A" + NL +
+                       "|B" + NL +
+                       "|"  + NL,
+      },
+      {
+        testName:      "example-00",
+        inputA:
+                       "Mo Tu We Th Fr Sa Su" + NL +
+                       "       1  2  3  4  5" + NL +
+                       " 6  7  8  9 10 11 12" + NL +
+                       "13 14 15 16 17 18 19" + NL +
+                       "20 21 22 23 24 25 26" + NL +
+                       "27 28"                + NL +
+                       ""                     + NL,
+        inputB:
+                       "Mo Tu We Th Fr Sa Su" + NL +
+                       "                1  2" + NL +
+                       " 3  4  5  6  7  8  9" + NL +
+                       "10 11 12 13 14 15 16" + NL +
+                       "17 18 19 20 21 22 23" + NL +
+                       "24 25 26 27 28"       + NL +
+                       ""                     + NL +
+                       ""                     + NL,
+        expectedValue:
+                       ":       1  2  3  4  5" + NL +
+                       ": 6  7  8  9 10 11 12" + NL +
+                       ":13 14 15 16 17 18 19" + NL +
+                       ":20 21 22 23 24 25 26" + NL +
+                       ":27 28"                + NL +
+                       "|                1  2" + NL +
+                       "| 3  4  5  6  7  8  9" + NL +
+                       "|10 11 12 13 14 15 16" + NL +
+                       "|17 18 19 20 21 22 23" + NL +
+                       "|24 25 26 27 28"       + NL +
+                       "|"                     + NL,
+      },
     },
   },
 }

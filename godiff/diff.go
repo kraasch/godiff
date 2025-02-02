@@ -2,9 +2,7 @@
 package godiff
 
 import (
-  //"fmt"
   "strings"
-  //"strconv"
 )
 
 func Diff(a, b string) (out string) {
@@ -26,7 +24,7 @@ func Diff(a, b string) (out string) {
 
   // loop over aa (the longer one).
   for i := range aa {
-    if i > len(bb) {
+    if i >= len(bb) { // i cannot index bb anymore.
       outA += "|" + aa[i] + "\n"
       continue
     }
