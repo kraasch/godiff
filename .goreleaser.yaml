@@ -1,6 +1,8 @@
 
 # docs: https://goreleaser.com/customization/builds/go/
 
+# this is a library, thus do not look for main
+# https://goreleaser.com/errors/no-main/
 builds:
-  - main: ./cmd/
+  - skip: true
 
