@@ -5,12 +5,31 @@ import (
   "strings"
 )
 
-func Diff(a, b string) (out string) {
+const (
+  red   = "\033[31m"
+  green = "\033[32m"
+  reset = "\033[0m"
+)
+
+func Diff(a string, b string) string {
+  return coloredDiff(a, b, false)
+}
+
+func CDiff(a string, b string) string {
+  return coloredDiff(a, b, true)
+}
+
+func coloredDiff(a string, b string, hasColor bool) (out string) {
 
   // temp variables.
   switched := false
   outA := ""
   outB := ""
+
+  if hasColor {
+    outA += red
+    outB += green
+  }
 
   // split input by line.
   aa := strings.Split(a, "\n")
@@ -39,6 +58,9 @@ func Diff(a, b string) (out string) {
     out = outB + outA
   } else {
     out = outA + outB
+  }
+  if hasColor {
+    out += reset
   }
 
   return

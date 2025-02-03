@@ -41,6 +41,28 @@ var suites = []TestSuite{
     },
   },
   /*
+  * Test for the function TEMPLATE().
+  */
+  {
+    functionUnderTest: CDiff,
+    tests: []TestList{
+      {
+        testName:      "colored-diff-00",
+        inputA:
+                       "A\n" +
+                       "B\n",
+        inputB:
+                       "a\n" +
+                       "b\n",
+        expectedValue:
+                   red + "|A\n" +
+                         "|B\n" +
+                 green + ":a\n" +
+                         ":b\n" + reset,
+      },
+    },
+  },
+  /*
   * Test for the function Diff().
   */
   {
